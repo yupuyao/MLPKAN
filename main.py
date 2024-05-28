@@ -21,14 +21,15 @@ class MLPKANLayer(nn.Module):
         self.outdim = outdim
         self.hidden_dim = hidden_dim
         self.proj_1 = nn.Linear(1, hidden_dim, bias=False)
-        self.proj_2 = nn.Linear(inputdim * hidden_dim, outdim)
+        self.proj_2 = nn.Linear(hidden_dim, 1)
+        self.proj_3 = nn.Linear(inputdim, outdim)
         self.act = act
 
     def forward(self, x):
-        x = self.proj_1(x.unsqueeze(-1)).view(-1, self.inputdim * self.hidden_dim)
+        x = self.proj_1(x.unsqueeze(-1))
         c = self.act(x)
-        y = self.proj_2(c)
-        return y
+        y = self.proj_2(c).squeeze(-1)
+        return self.proj_3(y)
 
 class MNISTMLPKAN(nn.Module):
     def __init__(self, act):

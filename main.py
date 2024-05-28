@@ -30,7 +30,6 @@ class MLPKANLayer(nn.Module):
         y = self.proj_2(c)
         return y
 
-
 class MNISTMLPKAN(nn.Module):
     def __init__(self, act):
         super(MNISTMLPKAN, self).__init__()
@@ -43,12 +42,10 @@ class MNISTMLPKAN(nn.Module):
         x = self.mlpkan2(x)
         return x
 
-
 # Load the MNIST dataset
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
 train_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transform)
 test_dataset = datasets.MNIST(root='./data', train=False, download=True, transform=transform)
-
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=256, shuffle=False)
 
@@ -62,7 +59,6 @@ activations = {
     'Cos': Cos(),
     'SiLU': nn.SiLU()
 }
-
 
 # Define the training loop
 def train(model, device, train_loader, optimizer, epoch):
@@ -78,7 +74,6 @@ def train(model, device, train_loader, optimizer, epoch):
         running_loss = loss.item()
 
         progress_bar.set_description(f'Epoch {epoch + 1}/{num_epochs} Running Loss: {running_loss:.6f}')
-
 
 # Define the evaluation loop
 def evaluate(model, device, test_loader):
@@ -96,7 +91,6 @@ def evaluate(model, device, test_loader):
     test_loss /= len(test_loader.dataset)
     print(
         f'\nTest set: Average loss: {test_loss:.4f}, Accuracy: {correct}/{len(test_loader.dataset)} ({100. * correct / len(test_loader.dataset):.0f}%)\n')
-
 
 for name, act_fn in activations.items():
     print(f"Testing with {name}")

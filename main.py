@@ -22,7 +22,7 @@ class MLPKANLayer(nn.Module):
         self.hidden_dim = hidden_dim
         self.proj_1 = nn.Linear(1, hidden_dim, bias=False)
         self.proj_2 = nn.Linear(hidden_dim, 1)
-        self.proj_3 = nn.Linear(inputdim, outdim)
+        self.proj_3 = nn.Linear(inputdim, outdim, bias=False)
         self.act = act
 
     def forward(self, x):

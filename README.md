@@ -10,41 +10,43 @@ MLPKAN operates in three stages:
 
 Total parameters for MLPKAN are calculated as `2 * hidden_dim + d_in * d_out`, compared to the typical MLP method (achieving the same dimension transformation): `hidden_dim * d_in * (d_in + d_out)`.
 
-# Performance after 1 epoch with different activation functions (96% max) 
+# Performance after 1 epoch with different activation functions (97% max) 
 
 ```
-Testing with ReLU
-Epoch 1/1 Running Loss: 0.246414: 100%|██████████| 938/938 [00:14<00:00, 63.20it/s]
-Test set: Average loss: 0.0005, Accuracy: 9580/10000 (96%)
+Epoch 1/1 Running Loss: 0.024769: 100%|██████████| 938/938 [00:16<00:00, 57.68it/s]
+Test set: Average loss: 0.0005, Accuracy: 9586/10000 (96%)
 
 Testing with GELU
-Epoch 1/1 Running Loss: 0.285726: 100%|██████████| 938/938 [00:13<00:00, 69.55it/s]
-Test set: Average loss: 0.0005, Accuracy: 9588/10000 (96%)
+Epoch 1/1 Running Loss: 0.464900: 100%|██████████| 938/938 [00:15<00:00, 62.32it/s]
+
+Test set: Average loss: 0.0006, Accuracy: 9533/10000 (95%)
 
 Testing with LeakyReLU
-Epoch 1/1 Running Loss: 0.166177: 100%|██████████| 938/938 [00:13<00:00, 69.83it/s]
-Test set: Average loss: 0.0005, Accuracy: 9582/10000 (96%)
+Epoch 1/1 Running Loss: 0.076915: 100%|██████████| 938/938 [00:15<00:00, 61.86it/s]
+
+Test set: Average loss: 0.0005, Accuracy: 9608/10000 (96%)
 
 Testing with Sigmoid
-Epoch 1/1 Running Loss: 0.267998: 100%|██████████| 938/938 [00:13<00:00, 67.21it/s]
-Test set: Average loss: 0.0008, Accuracy: 9417/10000 (94%)
+Epoch 1/1 Running Loss: 0.420319: 100%|██████████| 938/938 [00:14<00:00, 63.30it/s]
+
+Test set: Average loss: 0.0008, Accuracy: 9440/10000 (94%)
 
 Testing with Tanh
-Epoch 1/1 Running Loss: 0.066968: 100%|██████████| 938/938 [00:13<00:00, 70.41it/s]
-Test set: Average loss: 0.0006, Accuracy: 9538/10000 (95%)
+Epoch 1/1 Running Loss: 0.348992: 100%|██████████| 938/938 [00:14<00:00, 65.54it/s]
+Test set: Average loss: 0.0006, Accuracy: 9493/10000 (95%)
 
 Testing with ELU
-Epoch 1/1 Running Loss: 0.122461: 100%|██████████| 938/938 [00:15<00:00, 60.85it/s]
-Test set: Average loss: 0.0005, Accuracy: 9589/10000 (96%)
+Epoch 1/1 Running Loss: 0.142619: 100%|██████████| 938/938 [00:14<00:00, 64.46it/s]
+Test set: Average loss: 0.0005, Accuracy: 9625/10000 (96%)
 
 Testing with Cos
-Epoch 1/1 Running Loss: 0.103279: 100%|██████████| 938/938 [00:14<00:00, 65.47it/s]
+Epoch 1/1 Running Loss: 0.073093: 100%|██████████| 938/938 [00:15<00:00, 60.37it/s]
 
-Test set: Average loss: 0.0005, Accuracy: 9639/10000 (96%)
+Test set: Average loss: 0.0004, Accuracy: 9658/10000 (97%)
 
 Testing with SiLU
-Epoch 1/1 Running Loss: 0.262126: 100%|██████████| 938/938 [00:13<00:00, 67.50it/s]
+Epoch 1/1 Running Loss: 0.369693: 100%|██████████| 938/938 [00:13<00:00, 68.51it/s]
 
-Test set: Average loss: 0.0007, Accuracy: 9480/10000 (95%)
+Test set: Average loss: 0.0006, Accuracy: 9545/10000 (95%)
 
 ```

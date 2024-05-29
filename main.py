@@ -31,6 +31,22 @@ class MLPKANLayer(nn.Module):
         y = self.proj_2(c).squeeze(-1)
         return self.proj_3(y)
 
+# Replace the activation function learning by kernel learning
+# class KernelKANLayer(nn.Module):
+#     def __init__(self, inputdim, outdim, hidden_dim, act):
+#         super(KernelKANLayer, self).__init__()
+#         self.inputdim = inputdim
+#         self.outdim = outdim
+#         self.hidden_dim = hidden_dim
+#         self.proj_1 = nn.Linear(1, hidden_dim * 2, bias=False)
+#         self.proj_2 = nn.Linear(inputdim, outdim, bias=False)
+#         self.act = act
+# 
+#     def forward(self, x):
+#         q, k = self.act(self.proj_1(x.unsqueeze(-1))).chunk(2, dim=-1)
+#         c = torch.matmul(q.unsqueeze(-2), k.unsqueeze(-1)).squeeze()
+#         return self.proj_2(c)
+
 class MNISTMLPKAN(nn.Module):
     def __init__(self, act):
         super(MNISTMLPKAN, self).__init__()

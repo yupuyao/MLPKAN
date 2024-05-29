@@ -4,9 +4,9 @@ The MLPKAN is a modified implementation of the KAN architecture, replacing tradi
 ## Architecture Overview
 
 MLPKAN Layer operates in three stages:
-1. **Dimensionality Expansion**: MLPKAN transforms `d_in` into a shape of `(d_in, 1)`, leveraging a weight matrix of shape `(1, hidden_dim)` .
-2. **Activation Function Learning**: The output from the first stage is passed through an activation function. Subsequently, it is mapped from `(hidden_dim, 1)`.
-3. **Feature Mapping**: Apply the normal MLP mapping feature dimension from `d_in` into `d_out`.
+1. **Basis Generation**: The input with dimensions `(b, d_in, 1)` is first mapped to a higher-dimensional space using a weight matrix of dimensions `(1, hidden_dim)`. This mapping results in feature representations of dimensions `(b, d_in, hidden_dim)`.These high-dimensional features are then processed through a nonlinear function, transforming them into a set of bases within the space defined by the activation function we want to learn.
+2. **Activation Function Learning**: The features serving as bases undergo further linear combination using a new linear transformation matrix of dimensions `(hidden_dim, 1)`. This transformation produces a single output for each input, resulting in a learnable activation function. The output after this step has dimensions `(b, d_in)`.
+3. **Feature Mapping**:  the output feature from the activation function learning stage, with dimensions `(b, d_in)`, is mapped to the final output dimensions `(b, d_out)`.
 
 Total parameters for MLPKAN Layer are calculated as `2 * hidden_dim + d_in * d_out`.
 

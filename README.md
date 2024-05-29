@@ -1,5 +1,5 @@
 # Implementation of KAN with full MLP
-The MLPKAN is a modified implementation of the KAN architecture, replacing traditional components like B-Spline or FFT (https://github.com/GistNoesis/FourierKAN/blob/main/fftKAN.py) with complete MLP. This change potentially accelerates the model compared to its FourierKAN counterpart.
+The MLPKAN is a modified implementation of the KAN architecture, replacing components like B-Spline or FFT with complete MLP. This change potentially accelerates the model compared to its FourierKAN counterpart.
 
 ## Architecture Overview
 
